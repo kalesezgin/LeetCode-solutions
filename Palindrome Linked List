@@ -1,0 +1,33 @@
+class Solution {
+    public boolean isPalindrome(ListNode head) {
+        
+        ListNode temp = head;
+        Stack<ListNode> s = new Stack<>();
+        int count = 0;
+        while (temp != null) {
+            temp = temp.next;  
+            count ++;  
+        }
+
+        temp = head;
+
+        int i = 0;
+        for (i = 0; i < count / 2; i++) {
+            s.push(temp);
+            temp = temp.next;
+        }
+
+        if (count % 2 == 1) {
+            temp = temp.next;
+        }
+
+        while (!s.isEmpty()) {
+            if (s.pop().val != temp.val) {
+                return false;
+            }
+            temp = temp.next;
+        }
+
+        return true;
+    }
+}
