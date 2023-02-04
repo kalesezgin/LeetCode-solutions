@@ -1,0 +1,102 @@
+class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode t1 = l1;
+        ListNode t2 = l2;
+        int c;
+        ListNode sum = new ListNode();
+        ListNode s = sum;
+        s.val = t1.val + t2.val;
+        if (s.val > 9)
+        {
+            c=1;
+            s.val = s.val % 10;
+        }
+        else 
+        {
+            c=0;
+        }
+        t1=t1.next;
+        t2=t2.next;
+        
+
+        while (t1 != null && t2 != null)
+        {
+            ListNode newNode = new ListNode();
+            newNode.val = t1.val + t2.val + c;
+
+            if (newNode.val > 9)
+            {
+                newNode.val = newNode.val-10;
+                c=1;
+            }
+            else c = 0;
+
+            t1=t1.next;
+            t2=t2.next;
+
+            s.next = newNode;
+            s=s.next;
+        }
+
+        if (t1 == null)
+        {
+            while (t2 != null)
+            {
+                ListNode newNode = new ListNode();
+                newNode.val = t2.val + c;
+            
+            if (newNode.val > 9)
+            {
+                newNode.val = newNode.val-10;
+                c=1;
+            }
+            else c = 0;
+
+       
+            t2=t2.next;
+            s.next = newNode;
+            s=s.next;
+            }
+            if (c == 1)
+            {
+                ListNode newNode = new ListNode();
+                newNode.val = c;
+                s.next = newNode;
+                s=s.next;
+            }
+        }
+        else 
+        {
+            while (t1 != null)
+            {
+                ListNode newNode = new ListNode();
+                newNode.val = t1.val + c;
+            
+            if (newNode.val > 9)
+            {
+                newNode.val = newNode.val-10;
+                c=1;
+            }
+            else c = 0;
+            
+            t1=t1.next;
+           
+            s.next = newNode;
+            s=s.next;
+            }
+            if (c == 1)
+            {
+                ListNode newNode = new ListNode();
+                newNode.val = c;
+                s.next = newNode;
+                s=s.next;
+            }
+        }
+        
+
+        return sum;
+        
+
+        
+    }    
+}
