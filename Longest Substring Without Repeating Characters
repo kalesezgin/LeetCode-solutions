@@ -1,0 +1,33 @@
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        byte[] arr = s.getBytes();
+        ArrayList<Byte> list = new ArrayList<Byte>();
+        int size = 0;
+        int max = 0;
+          
+        int i = 0;
+            while (i< arr.length)
+            {
+                if(!list.contains(arr[i]))
+                {
+                    list.add(arr[i]);
+                    size ++;
+                }
+                else 
+                {
+                    list.clear();
+                    i=i-size;
+                    size = 0;
+                }
+                
+                
+                if (size > max)
+                {
+                    max = size;
+                }
+                i++;
+            }
+       
+        return max;
+    }
+}
