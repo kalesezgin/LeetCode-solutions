@@ -1,0 +1,30 @@
+class Solution {
+    public long findTheArrayConcVal(int[] nums) {
+        long c=0;
+        int i=0;
+        int j=nums.length-1;
+        int count = 0;
+        int numsj = 0;
+        
+        while (i<j)
+        {
+            count = 1;
+            numsj = nums[j];
+            
+            while (numsj > 0)
+            {
+                count = count * 10;
+                numsj = numsj/10;
+                
+            }
+            c += count*nums[i] + nums[j];
+            i++;
+            j--;
+        }
+        if (i==j)
+        {
+            c += nums[i];
+        }
+        return c;            
+    }
+}
