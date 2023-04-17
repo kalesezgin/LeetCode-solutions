@@ -1,0 +1,8 @@
+var runningSum = function(nums) {
+
+  const result = nums.reduce((acc,curr) => {
+      acc.push(curr + (acc.length > 0 ? acc[acc.length - 1]: 0))
+      return acc
+  }, [])
+  return result
+}
